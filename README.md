@@ -1,11 +1,11 @@
 # Development Tools  
 >*Ultimate Weapons* : PuTTY &amp; VIM &amp; ZSH &amp; SCREEN
 
-- [PuTTY](#PuTTY)
-- [VIM](#VIM)
-- [ZSH & oh-my-zsh](#ZSH)
-- [SCREEN](#SCREEN)
-- [Quick install in Ubuntu](mquick-install-in-ubuntu)
+- [PuTTY](#putty)
+- [VIM](#vim)
+- [ZSH & oh-my-zsh](#zsh)
+- [SCREEN](#screen)
+- [Quick install in Ubuntu](#mquick-install-in-ubuntu)
 
 ## PuTTY
 #### [How to copy & paste](http://xshaun.github.io/windows%E5%B0%8F%E8%A7%81/2017/04/10/putty%E5%A4%8D%E5%88%B6%E7%B2%98%E8%B4%B4)
