@@ -14,6 +14,16 @@ PuTTY &amp; VIM &amp; SCREEN
     install putty
     copy `igvita-desert.ubuntu` into `~/.putty/sessions/`
 
+
+#### ssh localhost
+    
+    // Linux
+    ssh-keygen -t dsa -P '' -f ~/.ssh/id_dsa 
+    cat ~/.ssh/id_dsa.pub >> ~/.ssh/authorized_keys
+    chmod 700 ~/.ssh
+    chmod 644 ~/.ssh/authorized_keys
+
+
 ## VIM
 Use [The Ultimate vimrc](https://github.com/amix/vimrc)
 
@@ -44,4 +54,4 @@ Have issues about `Unknown function: pathogen#infect` and `Unknown function: pat
 
 *Linux*  
 
-    cp `screenrc` into `~/.screenrc`
+    copy `screenrc` into `~/.screenrc`
