@@ -1,5 +1,5 @@
 Present=1
-HostName=192.168.4.201
+HostName=127.0.0.1
 LogFileName=putty.log
 LogType=0
 LogFileClash=-1
