@@ -1,5 +1,5 @@
 # Development Weapons
-PuTTY &amp; VIM &amp; SCREEN
+PuTTY &amp; VIM &amp; ZSH &amp; SCREEN
 
 ## PuTTY
 #### [How to copy & paste](http://xshaun.github.io/windows%E5%B0%8F%E8%A7%81/2017/04/10/putty%E5%A4%8D%E5%88%B6%E7%B2%98%E8%B4%B4)
@@ -36,7 +36,7 @@ Use [The Ultimate vimrc](https://github.com/amix/vimrc)
 But According to my habit, manually add following lines into `~/.vim_runtime/my_configs.vim`
     
     set number 
-    set highlight cursorline
+    set cursorline
 
 
 #### Issues and Solutions  
@@ -49,6 +49,10 @@ Have issues about `Unknown function: pathogen#infect` and `Unknown function: pat
     set nocp
     source ~/.vim_runtime/autoload/pathogen.vim
 
+## ZSH
+#### [How to install oh-my-zsh](https://github.com/xshaun/ubuntu-software/blob/master/documents/oh-my-zsh.md)
+
+
 ## SCREEN
 
 #### [How to use](http://xshaun.github.io/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/2017/04/10/Screen%E5%91%BD%E4%BB%A4)
@@ -57,7 +61,7 @@ Have issues about `Unknown function: pathogen#infect` and `Unknown function: pat
 
 ## [M]Quick install in Ubuntu
     
-    sudo apt-get install git putty vim screen
+    sudo apt-get install git curl putty vim zsh screen
     git clont git@github.com:xshaun/dev-tools.git
     
     mkdir -p ~/.putty/sessions/
@@ -65,8 +69,11 @@ Have issues about `Unknown function: pathogen#infect` and `Unknown function: pat
     
     git clone https://github.com/amix/vimrc.git ~/.vim_runtime
     sh ~/.vim_runtime/install_awesome_vimrc.sh
-    echo '\n set number\n set highlight cursorline\n' >> ~/.vim_runtime/my_configs.vim
+    echo '\n set number\n set cursorline\n' >> ~/.vim_runtime/my_configs.vim
 
+    chsh -s $(which zsh)
+    sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    
     cp ./dev-tools/screenrc ~/.screenrc
 
     rm -rf ./dev-tools
