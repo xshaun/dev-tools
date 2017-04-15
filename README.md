@@ -11,8 +11,8 @@ PuTTY &amp; VIM &amp; SCREEN
 
 *Linux*  
 
-    apt-get install putty
-    cp `igvita-desert.ubuntu` into `~/.putty/sessions/`
+    install putty
+    copy `igvita-desert.ubuntu` into `~/.putty/sessions/`
 
 ## VIM
 Use [The Ultimate vimrc](https://github.com/amix/vimrc)
@@ -30,10 +30,7 @@ Use [The Ultimate vimrc](https://github.com/amix/vimrc)
 
 #### Issues and Solutions  
 
-+ Unknown function: pathogen#infect
-+ Unknown function: pathogen#helptags
-
-add following lines into `~/.vim_runtime/vimrcs/plugins_config.vim`
+Have issues about `Unknown function: pathogen#infect` and `Unknown function: pathogen#helptags`, we can add following lines into `~/.vim_runtime/vimrcs/plugins_config.vim`
 
     """"""""""""""""""""""""""""""
     " => Load pathogen paths
