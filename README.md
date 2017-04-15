@@ -18,7 +18,7 @@ PuTTY &amp; VIM &amp; SCREEN
     chmod 700 ~/.ssh
     chmod 644 ~/.ssh/authorized_keys
 
-## VGIM
+## VIM
 Use [The Ultimate vimrc](https://github.com/amix/vimrc)
 
     # install
@@ -31,6 +31,13 @@ Use [The Ultimate vimrc](https://github.com/amix/vimrc)
 
     # update plugins
     python ~/.vim_runtime/update_plugins.py
+
+
+But According to my habit, manually add following lines into `~/.vim_runtime/my_configs.vim`
+    
+    set number 
+    set highlight cursorline
+
 
 #### Issues and Solutions  
 
@@ -58,6 +65,7 @@ Have issues about `Unknown function: pathogen#infect` and `Unknown function: pat
     
     git clone https://github.com/amix/vimrc.git ~/.vim_runtime
     sh ~/.vim_runtime/install_awesome_vimrc.sh
+    echo '\n set number\n set highlight cursorline\n' >> ~/.vim_runtime/my_configs.vim
 
     cp ./dev-tools/screenrc ~/.screenrc
 
