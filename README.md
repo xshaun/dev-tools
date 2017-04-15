@@ -5,17 +5,12 @@ PuTTY &amp; VIM &amp; SCREEN
 #### [How to copy & paste](http://xshaun.github.io/windows%E5%B0%8F%E8%A7%81/2017/04/10/putty%E5%A4%8D%E5%88%B6%E7%B2%98%E8%B4%B4)
 
 #### Color Scheme
-*Windows*   
 
-    double click `igvita-desert.reg`    
-
-*Linux*  
-
-    install putty
-    copy `igvita-desert.ubuntu` into `~/.putty/sessions/`
++ **Windows**: double click `igvita-desert.reg`    
++ **Linux**: copy `igvita-desert.ubuntu` into `~/.putty/sessions/`
 
 
-#### ssh localhost
+#### How to enable *ssh localhost*
     
     // Linux
     ssh-keygen -t dsa -P '' -f ~/.ssh/id_dsa 
@@ -23,8 +18,7 @@ PuTTY &amp; VIM &amp; SCREEN
     chmod 700 ~/.ssh
     chmod 644 ~/.ssh/authorized_keys
 
-
-## VIM
+## VGIM
 Use [The Ultimate vimrc](https://github.com/amix/vimrc)
 
     # install
@@ -52,6 +46,20 @@ Have issues about `Unknown function: pathogen#infect` and `Unknown function: pat
 
 #### [How to use](http://xshaun.github.io/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/2017/04/10/Screen%E5%91%BD%E4%BB%A4)
 
-*Linux*  
++ **Linux**: copy `screenrc` into `~/.screenrc`
 
-    copy `screenrc` into `~/.screenrc`
+## [M]Quick install in Ubuntu
+    
+    sudo apt-get install git putty vim screen
+    git clont git@github.com:xshaun/dev-tools.git
+    
+    mkdir -p ~/.putty/sessions/
+    cp ./dev-tools/igvita-desert.ubuntu ~/.putty/sessions/igvita-desert
+    
+    git clone https://github.com/amix/vimrc.git ~/.vim_runtime
+    sh ~/.vim_runtime/install_awesome_vimrc.sh
+
+    cp ./dev-tools/screenrc ~/.screenrc
+
+    rm -rf ./dev-tools
+
