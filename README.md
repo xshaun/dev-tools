@@ -69,7 +69,7 @@ Have issues about `Unknown function: pathogen#infect` and `Unknown function: pat
     
     git clone https://github.com/amix/vimrc.git ~/.vim_runtime
     sh ~/.vim_runtime/install_awesome_vimrc.sh
-    echo '\n set number\n set cursorline\n' >> ~/.vim_runtime/my_configs.vim
+    echo '\nset number\nset cursorline' >> ~/.vim_runtime/my_configs.vim
 
     chsh -s $(which zsh)
     sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
