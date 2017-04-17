@@ -54,17 +54,20 @@ Have issues about `Unknown function: pathogen#infect` and `Unknown function: pat
     source ~/.vim_runtime/autoload/pathogen.vim
 
 ## ZSH
-#### [How to install oh-my-zsh](https://github.com/xshaun/ubuntu-software/blob/master/documents/oh-my-zsh.md)
 
-    apt-get install zsh
+    apt-get install zsh git curl
     chsh -s $(which zsh)
     sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    # reset ZSH_THEME="ys" in ~/.zshrc
 
 ## SCREEN
 
 #### [How to use](http://xshaun.github.io/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/2017/04/10/Screen%E5%91%BD%E4%BB%A4)
 
 + **Linux**: copy `screenrc` into `~/.screenrc`
+
+
+----
 
 ## [M]Quick install in Ubuntu
     
@@ -80,6 +83,7 @@ Have issues about `Unknown function: pathogen#infect` and `Unknown function: pat
 
     chsh -s $(which zsh)
     sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    cp ./dev-tools/zshrc ~/.zshrc
     
     cp ./dev-tools/screenrc ~/.screenrc
 
