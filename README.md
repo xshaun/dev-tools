@@ -18,7 +18,7 @@
 
 #### How to enable *ssh localhost*
     
-    // Linux
+    # Linux
     ssh-keygen -t dsa -P '' -f ~/.ssh/id_dsa 
     cat ~/.ssh/id_dsa.pub >> ~/.ssh/authorized_keys
     chmod 700 ~/.ssh
@@ -38,12 +38,10 @@ Use [The Ultimate vimrc](https://github.com/amix/vimrc)
     # update plugins
     python ~/.vim_runtime/update_plugins.py
 
-
 But According to my habit, manually add following lines into `~/.vim_runtime/my_configs.vim`
     
     set number 
     set cursorline
-
 
 #### Issues and Solutions  
 
@@ -58,6 +56,9 @@ Have issues about `Unknown function: pathogen#infect` and `Unknown function: pat
 ## ZSH
 #### [How to install oh-my-zsh](https://github.com/xshaun/ubuntu-software/blob/master/documents/oh-my-zsh.md)
 
+    apt-get install zsh
+    chsh -s $(which zsh)
+    sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 ## SCREEN
 
@@ -75,7 +76,7 @@ Have issues about `Unknown function: pathogen#infect` and `Unknown function: pat
     
     git clone https://github.com/amix/vimrc.git ~/.vim_runtime
     sh ~/.vim_runtime/install_awesome_vimrc.sh
-    echo '\nset number\nset cursorline' >> ~/.vim_runtime/my_configs.vim
+    cp ./dev-tools/my_configs.vim ~/.vim_runtime/my_configs.vim
 
     chsh -s $(which zsh)
     sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
