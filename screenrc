@@ -9,7 +9,11 @@ vbell off
 hardstatus alwayslastline "%{b kw}%H %{r}%1` %{w}| %{g}%c %{w}| %{y}%d.%m.%Y %{w}| %{g}%l %{w}| %{-b kw}%u %-Lw%{= rW}%50> %n%f %t %{-}%+Lw%<"
 
 # use 256 colors
-#term screen-256color
+term screen-256color
+
+# support home/end keys
+"\e[1~": beginning-of-line
+"\e[4~": end-of-line
 
 # use X scrolling mechanism
 #termcapinfo xterm* ti@:te@
