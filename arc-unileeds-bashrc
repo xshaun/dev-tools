@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+# Initialize developing environment at arc*.leeds.ac.uk
+# The work is at Arc3 that is more stable than Arc4 by 1st Jun 2020.
+#
+# How to use this file?
+# - download (wget) and move (scp) this file into home directory as ~/.script/arc-unileeds-bashrc
+# - amend 'source ~/.script/arc-unileeds-bashrc' into ~/.bashrc file.
+
+# # #
+# set machine env
+# # #
+# arc3.leeds.ac.uk
+if [[ `hostname` =~ 'arc3' ]]; then 
+    module load python/3.6.5 python-libs/3.1.0 cuda/10.1.168 opencv/3.2.0 anaconda/2019.10
+fi
+# arc4.leeds.ac.uk
+if [[ `hostname` =~ 'arc4' ]]; then 
+    module load python/3.7.4 cuda/10.1.168 anaconda/2019.10
+fi
+
+# # #
+# python virtual env
+# # #
+vp=/nobackup/scxs/venv/ # define it by yourself
+export PATH=$vp:$PATH
+if [ ! -f $vp/_stop_init_ ]; then
+    mkdir -p $vp
+    #virtualenv --system-site-packages -p python3 $vp # only execute once
+    #python3 -m venv --system-site-packages $vp #virtualenv for python2 and venv for python3
+    
+    conda create -y -p $vp python=3 matplotlib pandas numpy 
+    touch $vp/_stop_init_
+fi
+
+# configure path
+if [[ `hostname` =~ 'arc3' ]]; then 
+    export PYTHONPATH=$vp/lib/python3.8/site-packages/:$PYTHONPATH
+    export LD_LIBRARY_PATH=/apps/developers/compilers/intel/17.0.1/1/default/ipp/lib/intel64_lin/:/apps/developers/compilers/cuda/10.1.168/1/default/extras/CUPTI/lib64/:$LD_LIBRARY_PATH
+fi
+
+if [[ `hostname` =~ 'arc4' ]]; then 
+    export PYTHONPATH=$vp/lib/python3.8/site-packages/:$PYTHONPATH
+    export LD_LIBRARY_PATH=/apps/developers/compilers/intel/19.0.4/1/default/ipp/lib/intel64_lin/:/apps/developers/compilers/cuda/10.1.168/1/default/extras/CUPTI/lib64/:$LD_LIBRARY_PATH
+fi
+
+alias venv="conda activate $vp"
+alias exit="conda deactivate; exit"
