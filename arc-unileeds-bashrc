@@ -10,7 +10,8 @@
 # set machine env
 # # #
 # change and define it by yourself
-VENV_PATH=/nobackup/scxs/conda-venv/
+USER_PYTHON_VERSION=3.6 # X.X format
+VENV_PATH=/nobackup/scxs/conda-venv-python$USER_PYTHON_VERSION/
 
 # default versions at arc3.leeds.ac.uk
 CUDA_VERSION=10.1.168
@@ -39,13 +40,15 @@ if [ ! -f $vp/_stop_init_ ]; then
     mkdir -p $vp    
     if [ -f ~/.conda ]; then
         rm -rf ~/.conda
+        mkdir -p /nobackup/home-.conda
+        ln -s /nobackup/home-.conda ~/.conda
     fi
-    conda create -y -p $vp python=3 matplotlib pandas numpy 
+    conda create -y -p $vp python=$USER_PYTHON_VERSION matplotlib pandas numpy 
     touch $vp/_stop_init_
 fi
 
 # configure path
-export PYTHONPATH=$vp/lib/python3.8/site-packages/:$PYTHONPATH
+export PYTHONPATH=$vp/lib/python$USER_PYTHON_VERSION/site-packages/:$PYTHONPATH
 export LD_LIBRARY_PATH=/apps/developers/compilers/cuda/$CUDA_VERSION/1/default/extras/CUPTI/lib64/:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=/apps/developers/compilers/intel/$INTEL_VERSION/1/default/ipp/lib/intel64_lin/:$LD_LIBRARY_PATH
 
