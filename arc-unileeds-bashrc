@@ -9,39 +9,48 @@
 # # #
 # set machine env
 # # #
-# arc3.leeds.ac.uk
-if [[ `hostname` =~ 'arc3' ]]; then 
-    module load python/3.6.5 python-libs/3.1.0 cuda/10.1.168 opencv/3.2.0 anaconda/2019.10
-fi
-# arc4.leeds.ac.uk
+# change and define it by yourself
+VENV_PATH=/nobackup/scxs/conda-venv/
+
+# default versions at arc3.leeds.ac.uk
+CUDA_VERSION=10.1.168
+INTEL_VERSION=17.0.1
+PYTHON_VERSION=3.6.5
+ANACONDA_VERSION=2019.10
+
+# diff versions at arc4.leeds.ac.uk
 if [[ `hostname` =~ 'arc4' ]]; then 
-    module load python/3.7.4 cuda/10.1.168 anaconda/2019.10
+    PYTHON_VERSION=3.7.4
+fi
+
+module load python/$PYTHON_VERSION cuda/$CUDA_VERSION anaconda/$ANACONDA_VERSION
+# only at arc3
+if [[ `hostname` =~ 'arc3' ]]; then 
+    module load python-libs/3.1.0 opencv/3.2.0
 fi
 
 # # #
 # python virtual env
 # # #
-vp=/nobackup/scxs/venv/ # define it by yourself
+vp=$VENV_PATH
 export PATH=$vp:$PATH
+
 if [ ! -f $vp/_stop_init_ ]; then
-    mkdir -p $vp
-    #virtualenv --system-site-packages -p python3 $vp # only execute once
-    #python3 -m venv --system-site-packages $vp #virtualenv for python2 and venv for python3
-    
+    mkdir -p $vp    
+    if [ -f ~/.conda ]; then
+        rm -rf ~/.conda
+    fi
     conda create -y -p $vp python=3 matplotlib pandas numpy 
     touch $vp/_stop_init_
 fi
 
 # configure path
-if [[ `hostname` =~ 'arc3' ]]; then 
-    export PYTHONPATH=$vp/lib/python3.8/site-packages/:$PYTHONPATH
-    export LD_LIBRARY_PATH=/apps/developers/compilers/intel/17.0.1/1/default/ipp/lib/intel64_lin/:/apps/developers/compilers/cuda/10.1.168/1/default/extras/CUPTI/lib64/:$LD_LIBRARY_PATH
-fi
+export PYTHONPATH=$vp/lib/python3.8/site-packages/:$PYTHONPATH
+export LD_LIBRARY_PATH=/apps/developers/compilers/cuda/$CUDA_VERSION/1/default/extras/CUPTI/lib64/:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/apps/developers/compilers/intel/$INTEL_VERSION/1/default/ipp/lib/intel64_lin/:$LD_LIBRARY_PATH
 
-if [[ `hostname` =~ 'arc4' ]]; then 
-    export PYTHONPATH=$vp/lib/python3.8/site-packages/:$PYTHONPATH
-    export LD_LIBRARY_PATH=/apps/developers/compilers/intel/19.0.4/1/default/ipp/lib/intel64_lin/:/apps/developers/compilers/cuda/10.1.168/1/default/extras/CUPTI/lib64/:$LD_LIBRARY_PATH
-fi
-
+# # #
+# set short keys
+# # #
 alias venv="conda activate $vp"
 alias exit="conda deactivate; exit"
