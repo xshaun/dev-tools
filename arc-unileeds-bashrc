@@ -9,51 +9,60 @@
 # # #
 # set machine env
 # # #
-# change and define it by yourself
-USER_PYTHON_VERSION=3.6 # X.X format
-VENV_PATH=/nobackup/scxs/conda-venv-python$USER_PYTHON_VERSION/
 
 # default versions at arc3.leeds.ac.uk
 CUDA_VERSION=10.1.168
-INTEL_VERSION=17.0.1
 PYTHON_VERSION=3.6.5
-ANACONDA_VERSION=2019.10
 
 # diff versions at arc4.leeds.ac.uk
 if [[ `hostname` =~ 'arc4' ]]; then 
     PYTHON_VERSION=3.7.4
 fi
 
-module load python/$PYTHON_VERSION cuda/$CUDA_VERSION anaconda/$ANACONDA_VERSION
-# only at arc3
-if [[ `hostname` =~ 'arc3' ]]; then 
-    module load python-libs/3.1.0 opencv/3.2.0
+if [[ `hostname` =~ 'arc' ]]; then # arc3 and arc4
+    module load cuda/$CUDA_VERSION singularity python/$PYTHON_VERSION
 fi
 
-# # #
-# python virtual env
-# # #
-vp=$VENV_PATH
-export PATH=$vp:$PATH
-
-if [ ! -f $vp/_stop_init_ ]; then
-    mkdir -p $vp    
-    if [ -f ~/.conda ]; then
-        rm -rf ~/.conda
-        mkdir -p /nobackup/home-.conda
-        ln -s /nobackup/home-.conda ~/.conda
-    fi
-    conda create -y -p $vp python=$USER_PYTHON_VERSION matplotlib pandas numpy 
-    touch $vp/_stop_init_
+# only at arc3
+if [[ `hostname` =~ 'arc3' ]]; then
+    module load bazel/0.12.0 go/1.13.3 llvm/6.0.1
 fi
 
 # configure path
-export PYTHONPATH=$vp/lib/python$USER_PYTHON_VERSION/site-packages/:$PYTHONPATH
-export LD_LIBRARY_PATH=/apps/developers/compilers/cuda/$CUDA_VERSION/1/default/extras/CUPTI/lib64/:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=/apps/developers/compilers/intel/$INTEL_VERSION/1/default/ipp/lib/intel64_lin/:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/apps/developers/compilers/cuda/$CUDA_VERSION/1/default/lib64/:$LD_LIBRARY_PATH
 
-# # #
-# set short keys
-# # #
-alias venv="conda activate $vp"
-alias exit="conda deactivate; exit"
+# --------------------------------------------- #
+# configuration about conda.
+# # change and define it by yourself
+# USER_PYTHON_VERSION=3.6 # X.X format
+# VENV_PATH=/nobackup/scxs/conda-venv-python$USER_PYTHON_VERSION/
+# 
+# ANACONDA_VERSION=2019.10
+# module load anaconda/$ANACONDA_VERSION
+# 
+# # # #
+# # python virtual env
+# # # #
+# vp=$VENV_PATH
+# export PATH=$vp:$PATH
+# 
+# if [ ! -f $vp/_stop_init_ ]; then
+#     mkdir -p $vp    
+#     if [ -f ~/.conda ]; then
+#         rm -rf ~/.conda
+#         mkdir -p /nobackup/home-.conda
+#         ln -s /nobackup/home-.conda ~/.conda
+#     fi
+#     conda create -y -p $vp python=$USER_PYTHON_VERSION matplotlib pandas numpy 
+#     touch $vp/_stop_init_
+# fi
+# 
+# export PYTHONPATH=$vp/lib/python$USER_PYTHON_VERSION/site-packages/:$PYTHONPATH
+# export LD_LIBRARY_PATH=/apps/developers/compilers/intel/$INTEL_VERSION/1/default/ipp/lib/intel64_lin/:$LD_LIBRARY_PATH
+# 
+# # # #
+# # set short keys
+# # # #
+# alias venv="conda activate $vp"
+# alias exit="conda deactivate; exit"
+
