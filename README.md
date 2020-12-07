@@ -1,14 +1,15 @@
 # Development Tools
 
-- ##### coding-themes
+- coding-themes
   - [PuTTY](#putty)
   - [ZSH & oh-my-zsh](#zsh)
-- ##### coding-server
+- coding-server
   - [VIM](#vim)
   - [SCREEN](#screen)
-- ##### network
+- network
   - [VPN: IPsec on Azure](ipsec-on-azure)
 
+---
 
 #### PuTTY
 ##### [How to copy & paste](http://xshaun.github.io/windows%E5%B0%8F%E8%A7%81/2017/04/10/putty%E5%A4%8D%E5%88%B6%E7%B2%98%E8%B4%B4)
@@ -17,6 +18,8 @@
 
 + **Windows**: double click `igvita-desert.reg`
 + **Linux**: copy `igvita-desert.ubuntu` into `~/.putty/sessions/`
+
+---
 
 #### VIM
 Use [The Ultimate vimrc](https://github.com/amix/vimrc)
@@ -47,6 +50,8 @@ Have issues about `Unknown function: pathogen#infect` and `Unknown function: pat
     set nocp
     source ~/.vim_runtime/autoload/pathogen.vim
 
+---
+
 #### ZSH
 
     apt-get install zsh git curl
@@ -54,11 +59,15 @@ Have issues about `Unknown function: pathogen#infect` and `Unknown function: pat
     sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     # reset ZSH_THEME="ys" in ~/.zshrc
 
+---
+
 #### SCREEN
 
 ##### [How to use](http://xshaun.github.io/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/2017/04/10/Screen%E5%91%BD%E4%BB%A4)
 
 + **Linux**: copy `screenrc` into `~/.screenrc`
+
+---
 
 #### IPsec on Azure
 details on [./network/ipsec-on-azure.md](./network/ipsec-on-azure.md)
