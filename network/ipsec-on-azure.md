@@ -2,15 +2,15 @@ This article refers to the article - [https://frankindev.com/2020/01/09/setup-ik
 
 This project is born since I was not able to open the training courses at [https://web.microsoftstream.com](https://web.microsoftstream.com). The videos can't be loaded as a few underlying libraries are blocked.
 
-** Pay attention: ** this project only helps students that are forced to become members of the Zoom University to access academic resources - like tutorials, coursework, seminars from their schools. Never be evil.
+**Pay More Attention:** this project only helps students that are forced to become members of the Zoom University to access academic resources - like tutorials, coursework, seminars from their schools. ***Never be evil***.
 
-##### step1. creat a virtual machine on Azure.
+### step1. creat a virtual machine on Azure.
 
-Normally, every student will have a free account with arround $200 credit. The balance almostly can handle the 12-month cost of a low-performance machine.
+Normally, every student will have a free account with around $200 credit. The balance almostly can handle the 12-month cost of a low-performance machine.
 
-This project uses ** Ubuntu OS **.
+This project uses **Ubuntu OS**.
 
-##### step2. execute the following instructions.
+### step2. execute the following instructions.
 
 install dependency softwares.
 ```
@@ -93,7 +93,7 @@ sudo ipsec reload
 sudo ipsec restart
 ```
 
-##### step3. configure firewall and redirecting rules.
+### step3. configure firewall and redirecting rules.
 
 ```
 sudo ufw allow 500,4500/udp
@@ -101,7 +101,7 @@ sudo ufw allow 500,4500/udp
 sudo vim /etc/ufw/before.rules
 ```
 
-pay attention that here is `eth0` network card, please change it as your need.
+pay attention that here is `eth0` network card, please change it as your need. *find `*filter` item and add the following content before and after it.*
 ```
 *nat
 -A POSTROUTING -s 10.10.10.0/24 -o eth0 -m policy --pol ipsec --dir out -j ACCEPT
@@ -122,7 +122,7 @@ COMMIT
 -A ufw-before-forward --match policy --pol ipsec --dir out --proto esp -d 10.10.10.0/24 -j ACCEPT
 ```
 
-configure redirecting rules.
+configure redirecting rules. *find the following items and change their values*
 ```
 sudo vim /etc/ufw/sysctl.conf
 ```
@@ -139,7 +139,7 @@ sudo ufw disable
 sudo ufw enable
 ```
 
-##### step4. configure your clients.
+### step4. configure your clients.
 
 Download `/etc/ipsec.d/cacerts/ca-cert.pem` to install it into your device.
 
