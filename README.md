@@ -7,7 +7,7 @@
   - [VIM](#vim)
   - [SCREEN](#screen)
 - network
-  - [VPN: IPsec on Azure](ipsec-on-azure)
+  - [VPN: IPsec on Azure](./network/ipsec-on-azure)
 
 ---
 
