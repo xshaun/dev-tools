@@ -84,7 +84,7 @@ sudo vim /etc/ipsec.secrets
 ```
 ```
 : RSA "server-key.pem"
-vpnacount : EAP "vpnpassword"
+vpnaccount : EAP "vpnpassword"
 ```
 
 restart services
@@ -95,13 +95,14 @@ sudo ipsec restart
 
 ### step3. configure firewall and redirecting rules.
 
+!!! pay attention that you should add `inbound port rule` in networking for VMs
 ```
 sudo ufw allow 500,4500/udp
 
 sudo vim /etc/ufw/before.rules
 ```
 
-pay attention that here is `eth0` network card, please change it as your need. *find `*filter` item and add the following content before and after it.*
+!!! pay attention that here is `eth0` network card, please change it as your need. *find `*filter` item and add the following content before and after it.*
 ```
 *nat
 -A POSTROUTING -s 10.10.10.0/24 -o eth0 -m policy --pol ipsec --dir out -j ACCEPT
