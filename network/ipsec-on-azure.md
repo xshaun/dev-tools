@@ -112,11 +112,13 @@ COMMIT
 -A FORWARD --match policy --pol ipsec --dir in -s 10.10.10.0/24 -o eth0 -p tcp -m tcp --tcp-flags SYN,RST SYN -m tcpmss --mss 1361:1536 -j TCPMSS --set-mss 1360
 COMMIT
 
+# Don't delete these required lines, otherwise there will be errors
 *filter
 :ufw-before-input - [0:0]
 :ufw-before-output - [0:0]
 :ufw-before-forward - [0:0]
 :ufw-not-local - [0:0]
+# End required lines
 
 -A ufw-before-forward --match policy --pol ipsec --dir in --proto esp -s 10.10.10.0/24 -j ACCEPT
 -A ufw-before-forward --match policy --pol ipsec --dir out --proto esp -d 10.10.10.0/24 -j ACCEPT
