@@ -1,12 +1,12 @@
 # Development Tools
 
-- coding-themes
+- coding (terminal)
   - [PuTTY](#putty)
   - [ZSH & oh-my-zsh](#zsh)
-- coding-server
+- coding (editor)
   - [VIM](#vim)
   - [SCREEN](#screen)
-- network
+- network (VPN)
   - [VPN: IPsec on Azure](#ipsec-on-azure)
 
 ---
