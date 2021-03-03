@@ -24,6 +24,7 @@ at `~/.ssh/config`
 Host node007
     User node007-username
     ProxyJump proxy-username@proxy-ip
+    #ProxyCommand ssh -W %h:%p
     HostName node007-ip/url
 ```
 
