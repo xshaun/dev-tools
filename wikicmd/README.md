@@ -18,13 +18,13 @@
 #### how to remotely copy files through proxy/jump servers?
 `scp -oProxyCommand="ssh -W %h:%p <proxy-user>@<proxy-ip>" <source> <destination>`
 
-#### how to configure ssh?
+#### how to configure ssh with ProxyJump?
 at `~/.ssh/config`
 ```
 Host node007
     User node007-username
     ProxyJump proxy-username@proxy-ip
-    HostName node007-ip
+    HostName node007-ip/url
 ```
 
 #### how to configure DNS service?
