@@ -18,6 +18,8 @@ sudo apt update
 sudo apt install strongswan strongswan-pki libcharon-extra-plugins moreutils iptables-persistent
 ```
 
+> if the error `Package strongswan-pki is not available, but is referred to by another package. This may mean that the package is missing, has been obsoleted, or is only available from another source E: Package 'strongswan-pki' has no installation candidate` occurs, just remove `strongswan-pki`
+
 create certificates
 ```
 PI=<Your Public IP>
@@ -95,14 +97,35 @@ sudo ipsec restart
 
 ### step3. configure firewall and redirecting rules.
 
-!!! pay attention that you should add `inbound port rule` in networking for VMs
+!!!  pay attention that you should add `inbound port rule` in networking for VMs in **Web Portal**
+!!!  pay attention that you should add `inbound port rule` in networking for VMs in **Web Portal**
+!!! p ay attention that you should add `inbound port rule` in networking for VMs in **Web Portal**
+
 ```
 sudo ufw allow 500,4500/udp
 
 sudo vim /etc/ufw/before.rules
 ```
 
-!!! pay attention that here is `eth0` network card, please change it as your need. *find `*filter` item and add the following content before and after it.*
+!!! pay attention that here is `eth0` network card, please change it as your need. *find `*filter` item and add the following content before it.*
+```
+*nat
+-A POSTROUTING -s 10.10.10.0/24 -o eth0 -m policy --pol ipsec --dir out -j ACCEPT
+-A POSTROUTING -s 10.10.10.0/24 -o eth0 -j MASQUERADE
+COMMIT
+
+*mangle
+-A FORWARD --match policy --pol ipsec --dir in -s 10.10.10.0/24 -o eth0 -p tcp -m tcp --tcp-flags SYN,RST SYN -m tcpmss --mss 1361:1536 -j TCPMSS --set-mss 1360
+COMMIT
+```
+
+and after it
+```
+-A ufw-before-forward --match policy --pol ipsec --dir in --proto esp -s 10.10.10.0/24 -j ACCEPT
+-A ufw-before-forward --match policy --pol ipsec --dir out --proto esp -d 10.10.10.0/24 -j ACCEPT
+```
+
+finally, shows like
 ```
 *nat
 -A POSTROUTING -s 10.10.10.0/24 -o eth0 -m policy --pol ipsec --dir out -j ACCEPT
@@ -123,6 +146,7 @@ COMMIT
 
 -A ufw-before-forward --match policy --pol ipsec --dir in --proto esp -s 10.10.10.0/24 -j ACCEPT
 -A ufw-before-forward --match policy --pol ipsec --dir out --proto esp -d 10.10.10.0/24 -j ACCEPT
+
 ```
 
 configure redirecting rules. *find the following items and change their values*
