@@ -11,6 +11,9 @@ hardstatus alwayslastline "%{b kw}%H %{r}%1` %{w}| %{g}%c %{w}| %{y}%d.%m.%Y %{w
 # use 256 colors
 term screen-256color
 
+# scroll back 10000 lines                                                                                                                                            
+defscrollback 10000
+
 # support home/end keys
 "\e[1~": beginning-of-line
 "\e[4~": end-of-line
