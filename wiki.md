@@ -1,19 +1,23 @@
 # Development Tools
 
-- coding (editor)
-  - [VIM](#vim)
-  - [SCREEN](#screen)
 - coding (terminal)
   - [PuTTY](#putty)
   - [ZSH & oh-my-zsh](#zsh)
+- coding (editor)
+  - [VIM](#vim)
+  - [SCREEN](#screen)
 - network (VPN)
   - [VPN: IPsec on Azure](#ipsec-on-azure)
 
 ---
 
-#### SCREEN
+#### PuTTY
+##### [How to copy & paste](http://xshaun.github.io/windows%E5%B0%8F%E8%A7%81/2017/04/10/putty%E5%A4%8D%E5%88%B6%E7%B2%98%E8%B4%B4)
 
-+ **Linux**: copy `screenrc` into `~/.screenrc`
+##### Color Scheme
+
++ **Windows**: double click `igvita-desert.reg`
++ **Linux**: copy `igvita-desert.ubuntu` into `~/.putty/sessions/`
 
 ---
 
@@ -57,15 +61,13 @@ Have issues about `Unknown function: pathogen#infect` and `Unknown function: pat
 
 ---
 
-#### PuTTY
+#### SCREEN
 
-##### Color Scheme
+##### [How to use](http://xshaun.github.io/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/2017/04/10/Screen%E5%91%BD%E4%BB%A4)
 
-+ **Windows**: double click `igvita-desert.reg`
-+ **Linux**: copy `igvita-desert.ubuntu` into `~/.putty/sessions/`
++ **Linux**: copy `screenrc` into `~/.screenrc`
 
 ---
 
-
 #### IPsec on Azure
-details on [./ipsec-on-azure.md](./ipsec-on-azure.md)
+details on [./network/ipsec-on-azure.md](./network/ipsec-on-azure.md)
