@@ -20,6 +20,8 @@ defscrollback 10000
 
 # use X scrolling mechanism
 #termcapinfo xterm* ti@:te@
+# works with "export TERM=xterm"
+termcapinfo xterm|xterms|xs ti@:te=\E[2J
 
 # turn welcome message off
 startup_message off
